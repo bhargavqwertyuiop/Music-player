@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  musicwave:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: musicwave-app
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "8080:80"  # Alternative port
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    volumes:
+      # Optional: Mount custom nginx config
+      # - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      # Optional: Mount logs for debugging
+      - musicwave_logs:/var/log/nginx
+    networks:
+      - musicwave-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.musicwave.rule=Host(`localhost`)"
+      - "traefik.http.services.musicwave.loadbalancer.server.port=80"
+
+  # Optional: Nginx reverse proxy for multiple services
+  nginx-proxy:
+    image: nginx:alpine
+    container_name: musicwave-proxy
+    restart: unless-stopped
+    ports:
+      - "443:443"
+    volumes:
+      - ./proxy.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - musicwave
+    networks:
+      - musicwave-network
+    profiles:
+      - proxy
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  musicwave_logs:
+    driver: local
+
+networks:
+  musicwave-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
