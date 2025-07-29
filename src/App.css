@@ -1,0 +1,241 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+/* Button styles */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.btn-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.btn-icon-lg {
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* Input styles */
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.875rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Card styles */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Text styles */
+.text-primary {
+  color: white;
+  font-weight: 600;
+}
+
+.text-secondary {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+.text-muted {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+/* Utility classes */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
+.m-4 {
+  margin: 1rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.rounded {
+  border-radius: 0.5rem;
+}
+
+.rounded-lg {
+  border-radius: 0.75rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+/* Animations */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}

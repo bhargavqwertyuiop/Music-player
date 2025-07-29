@@ -1,0 +1,268 @@
+.track-list {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.track-list-header {
+  display: grid;
+  grid-template-columns: 60px 1fr 200px 80px 120px;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.header-cell {
+  display: flex;
+  align-items: center;
+}
+
+.track-list-body {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.track-list-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 200px 80px 120px;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  align-items: center;
+}
+
+.track-list-row:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.track-list-row.current {
+  background: rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.track-list-row.current:hover {
+  background: rgba(102, 126, 234, 0.25);
+}
+
+.track-cell {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.track-play {
+  position: relative;
+}
+
+.track-number {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-variant-numeric: tabular-nums;
+  transition: opacity 0.2s ease;
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  transition: all 0.2s ease;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.track-list-row:hover .track-number {
+  opacity: 0;
+}
+
+.track-list-row:hover .play-btn,
+.track-list-row.current .play-btn {
+  opacity: 1;
+}
+
+.play-btn:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.track-title-cell {
+  gap: 1rem;
+}
+
+.track-artwork-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.artwork-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artwork-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.track-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.track-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.25rem;
+}
+
+.track-artist {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-album {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-duration {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-variant-numeric: tabular-nums;
+  justify-content: center;
+}
+
+.track-actions {
+  gap: 0.25rem;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.track-list-row:hover .track-actions {
+  opacity: 1;
+}
+
+.track-action {
+  color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.track-action:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.track-action.liked {
+  color: #ff6b6b;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .track-list-header,
+  .track-list-row {
+    grid-template-columns: 50px 1fr 150px 70px 100px;
+  }
+  
+  .track-list-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .track-list-row {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .track-list-header,
+  .track-list-row {
+    grid-template-columns: 50px 1fr 80px;
+  }
+  
+  .header-album,
+  .header-actions,
+  .track-album,
+  .track-actions {
+    display: none;
+  }
+  
+  .track-artwork-small {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .track-title-cell {
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .track-list-header {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  .track-list-row {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .track-artwork-small {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .track-title {
+    font-size: 0.9rem;
+  }
+  
+  .track-artist {
+    font-size: 0.75rem;
+  }
+  
+  .track-duration {
+    font-size: 0.8rem;
+  }
+  
+  .track-actions {
+    opacity: 1;
+  }
+}

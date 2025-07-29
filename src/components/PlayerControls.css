@@ -1,0 +1,362 @@
+.player-controls {
+  height: 90px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.player-controls-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Track Info */
+.track-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.track-artwork {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.artwork-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.artwork-placeholder {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.artwork-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.track-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.track-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0.25rem;
+}
+
+.track-artist {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-placeholder .track-title {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.track-placeholder .track-artist {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.track-action {
+  margin-left: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.2s ease;
+}
+
+.track-action:hover {
+  color: #667eea;
+}
+
+/* Main Controls */
+.main-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.control-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control-btn {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+.control-btn.active {
+  color: #667eea;
+}
+
+.control-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.control-btn:disabled:hover {
+  transform: none;
+}
+
+.play-pause-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin: 0 1rem;
+  transition: all 0.2s ease;
+}
+
+.play-pause-btn:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+  transform: scale(1.05);
+}
+
+.play-pause-btn:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  transform: none;
+}
+
+/* Progress Controls */
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.time-display {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-variant-numeric: tabular-nums;
+  min-width: 40px;
+  text-align: center;
+}
+
+.progress-slider {
+  flex: 1;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.progress-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+  position: relative;
+  transition: width 0.1s ease;
+}
+
+.progress-thumb {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.progress-slider:hover .progress-thumb {
+  opacity: 1;
+}
+
+.progress-track:hover {
+  height: 6px;
+}
+
+/* Volume Controls */
+.volume-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.volume-section {
+  position: relative;
+}
+
+.volume-btn {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease;
+}
+
+.volume-btn:hover {
+  color: white;
+}
+
+.volume-slider-container {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.volume-slider-container.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.volume-slider {
+  width: 80px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.volume-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  position: relative;
+}
+
+.volume-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+  position: relative;
+}
+
+.volume-thumb {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .player-controls-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .track-info {
+    order: 3;
+  }
+  
+  .main-controls {
+    order: 1;
+  }
+  
+  .volume-controls {
+    order: 2;
+    justify-content: center;
+  }
+  
+  .track-artwork {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .control-buttons {
+    gap: 1rem;
+  }
+  
+  .progress-container {
+    gap: 0.5rem;
+  }
+  
+  .time-display {
+    font-size: 0.75rem;
+    min-width: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .player-controls {
+    padding: 0 1rem;
+  }
+  
+  .track-info {
+    gap: 0.75rem;
+  }
+  
+  .track-artwork {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .control-buttons {
+    gap: 0.75rem;
+  }
+  
+  .control-btn {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .play-pause-btn {
+    width: 3rem;
+    height: 3rem;
+  }
+}

@@ -1,0 +1,233 @@
+.track-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.track-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.track-card.current {
+  background: rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.4);
+}
+
+.track-card.current:hover {
+  background: rgba(102, 126, 234, 0.25);
+}
+
+.track-card-artwork {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.artwork-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.track-card:hover .artwork-image {
+  transform: scale(1.05);
+}
+
+.artwork-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.artwork-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.track-card:hover .artwork-overlay,
+.track-card.current .artwork-overlay {
+  opacity: 1;
+}
+
+.play-btn {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #333 !important;
+  backdrop-filter: blur(10px);
+  transform: scale(0.8);
+  transition: all 0.2s ease;
+}
+
+.play-btn:hover {
+  background: white !important;
+  transform: scale(0.9);
+}
+
+.track-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.track-info {
+  flex: 1;
+}
+
+.track-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 0.25rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.track-artist {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 0.25rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.track-album {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.track-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.track-duration {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-variant-numeric: tabular-nums;
+}
+
+.track-year {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+
+.track-actions {
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.track-card:hover .track-actions {
+  opacity: 1;
+}
+
+.track-action {
+  color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.track-action:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.track-action.liked {
+  color: #ff6b6b;
+}
+
+.track-genre {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.track-card:hover .track-genre {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .track-card {
+    padding: 0.75rem;
+  }
+  
+  .track-card-artwork {
+    margin-bottom: 0.75rem;
+  }
+  
+  .track-title {
+    font-size: 0.9rem;
+  }
+  
+  .track-artist {
+    font-size: 0.8rem;
+  }
+  
+  .track-album {
+    font-size: 0.75rem;
+  }
+  
+  .track-actions {
+    opacity: 1;
+  }
+}
