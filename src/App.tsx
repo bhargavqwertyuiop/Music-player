@@ -8,21 +8,21 @@ import { MainContent } from './components/MainContent';
 import { sampleTracks } from './data/sampleTracks';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
   const {
     playerState,
     play,
     pause,
-    seek,
-    setVolume,
-    toggleMute,
-    playNext,
-    playPrevious,
     setQueue,
     toggleShuffle,
     toggleRepeat,
     addToQueue,
     removeFromQueue,
+    playNext,
+    playPrevious,
+    seek,
+    setVolume,
+    toggleMute,
   } = useAudio();
 
   const [currentView, setCurrentView] = useState<ViewMode>('library');
@@ -97,6 +97,6 @@ function App() {
       />
     </div>
   );
-}
+};
 
 export default App;
